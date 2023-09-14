@@ -15,9 +15,11 @@ function getComputerChoice() {
 
 let roundResult;
 
-function playRound() {
-    getComputerChoice();
-    playerChoice = prompt("Rock, Paper, or Scissors?", "");
+function playRound(playerChoice, computerChoice) {
+    playerChoice = prompt("Rock, Paper, or Scissors?", "Choose an Option!!");
+    computerChoice = getComputerChoice();
+    alert(`You Chose: ${playerChoice}!`);
+    alert(`Your Opponent Chose: ${computerChoice}!`);
 
     let playerLowercase = playerChoice.toLowerCase();
    
@@ -45,7 +47,6 @@ function playRound() {
     } else {
         roundResult = "Invalid Selection! Please select rock, paper, or scissors!";
     }
-
+    alert(`${roundResult}`);
     return roundResult;
-
 }
