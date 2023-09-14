@@ -14,6 +14,10 @@ function getComputerChoice() {
 }
 
 let roundResult;
+let winLoseOrTie;
+let winResult = "You win!";
+let tieResult = "It's a tie!";
+let loseResult = "You lose!";
 
 function playRound(playerChoice, computerChoice) {
     playerChoice = prompt("Rock, Paper, or Scissors?", "Choose an Option!!");
@@ -24,29 +28,64 @@ function playRound(playerChoice, computerChoice) {
     let playerLowercase = playerChoice.toLowerCase();
    
     if (playerLowercase === computerChoice) {
-        roundResult = `It's a tie! You both chose ${playerLowercase}!`;
+        winLoseOrTie = tieResult;
+        roundResult = `${winLoseOrTie} You both chose ${playerLowercase}!`;
         
     } else if (playerLowercase === "rock" && computerChoice === "scissors") {
-        roundResult = "You win! Rock crushes scissors!";
+        winLoseOrTie = winResult;
+        roundResult = `${winLoseOrTie} Rock crushes scissors!`;
 
     } else if (playerLowercase === "rock" && computerChoice === "paper") {
-        roundResult = "You lose! Paper covers rock!";
+        winLoseOrTie = loseResult;
+        roundResult = `${winLoseOrTie} Paper covers rock!`;
 
     } else if (playerLowercase === "paper" && computerChoice === "rock") {
-        roundResult = "You win! Paper covers rock!";
+        winLoseOrTie = winResult;
+        roundResult = `${winLoseOrTie} Paper covers rock!`;
 
     } else if (playerLowercase === "paper" && computerChoice === "scissors") {
-        roundResult = "You lose! Scissors cuts paper!";
+        winLoseOrTie = loseResult;
+        roundResult = `${winLoseOrTie} Scissors cuts paper!`;
         
     } else if (playerLowercase === "scissors" && computerChoice === "paper") {
-        roundResult = "You win! Scissors cuts paper!";
+        winLoseOrTie = winResult;
+        roundResult = `${winLoseOrTie} Scissors cuts paper!`;
 
     } else if (playerLowercase === "scissors" && computerChoice === "rock") {
-        roundResult = "You lose! Rock crushes scissors!";
+        winLoseOrTie = loseResult;
+        roundResult = `${winLoseOrTie} Rock crushes scissors!`;
 
     } else {
         roundResult = "Invalid Selection! Please select rock, paper, or scissors!";
     }
     alert(`${roundResult}`);
+
+    if (winLoseOrTie === winResult) {
+        playerScore += 1;
+    } else if (winLoseOrTie === loseResult) {
+        computerScore += 1;
+    }
+
     return roundResult;
+}
+
+let playerScore;
+let computerScore;
+
+function game() {
+    playerScore = 0;
+    computerScore = 0;
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+
+    if (playerScore > computerScore) {
+        return `You scored: ${playerScore}. Your opponent scored: ${computerScore}. Congratulations You Win!`;
+    } else if (playerScore === computerScore) {
+        return `You scored: ${playerScore}. Your opponent scored: ${computerScore}. It's a Tie!`;
+    } else if (playerScore < computerScore) {
+        return `You scored: ${playerScore}. Your opponent scored: ${computerScore}. Sorry You Lose!`;
+    }
 }
