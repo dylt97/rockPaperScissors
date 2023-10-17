@@ -20,10 +20,7 @@ const tieResult = "It's a tie!";
 const loseResult = "You lose!";
 
 function playRound(playerChoice, computerChoice) {
-    //playerChoice = prompt("Rock, Paper, or Scissors?", "Choose an Option!!");
     computerChoice = getComputerChoice();
-    //alert(`You Chose: ${playerChoice}!`);
-    //alert(`Your Opponent Chose: ${computerChoice}!`);
 
     let playerLowercase = playerChoice.toLowerCase();
    
@@ -55,10 +52,7 @@ function playRound(playerChoice, computerChoice) {
         winLoseOrTie = loseResult;
         roundResult = `${winLoseOrTie} Rock crushes scissors!`;
 
-    } else {
-        roundResult = "Invalid Selection! Please select rock, paper, or scissors!";
     }
-    //alert(`${roundResult}`);
 
     if (winLoseOrTie === winResult) {
         playerScore += 1;
@@ -66,29 +60,14 @@ function playRound(playerChoice, computerChoice) {
         computerScore += 1;
     }
 
+    playerScoreBox.textContent = `Player Score: ${playerScore}`;
+    computerScoreBox.textContent = `Computer Score: ${computerScore}`;
+
     return roundResult;
 }
 
-let playerScore;
-let computerScore;
-
-/*function game() {
-    playerScore = 0;
-    computerScore = 0;
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-
-    if (playerScore > computerScore) {
-        return `You scored: ${playerScore}. Your opponent scored: ${computerScore}. Congratulations You Win!`;
-    } else if (playerScore === computerScore) {
-        return `You scored: ${playerScore}. Your opponent scored: ${computerScore}. It's a Tie!`;
-    } else if (playerScore < computerScore) {
-        return `You scored: ${playerScore}. Your opponent scored: ${computerScore}. Sorry You Lose!`;
-    }
-}  */ 
+let playerScore = 0;
+let computerScore = 0;
 
 let resultsBox = document.querySelector('div#result');
 
@@ -110,4 +89,5 @@ scissorsBtn.addEventListener('click', function() {
     resultsBox.textContent = roundResult;
 });
 
-
+let playerScoreBox = document.querySelector('span.playerScoreBox');
+let computerScoreBox = document.querySelector('span.computerScoreBox');
