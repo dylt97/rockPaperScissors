@@ -22,8 +22,8 @@ const loseResult = "You lose!";
 function playRound(playerChoice, computerChoice) {
     //playerChoice = prompt("Rock, Paper, or Scissors?", "Choose an Option!!");
     computerChoice = getComputerChoice();
-    alert(`You Chose: ${playerChoice}!`);
-    alert(`Your Opponent Chose: ${computerChoice}!`);
+    //alert(`You Chose: ${playerChoice}!`);
+    //alert(`Your Opponent Chose: ${computerChoice}!`);
 
     let playerLowercase = playerChoice.toLowerCase();
    
@@ -58,7 +58,7 @@ function playRound(playerChoice, computerChoice) {
     } else {
         roundResult = "Invalid Selection! Please select rock, paper, or scissors!";
     }
-    alert(`${roundResult}`);
+    //alert(`${roundResult}`);
 
     if (winLoseOrTie === winResult) {
         playerScore += 1;
@@ -90,19 +90,24 @@ let computerScore;
     }
 }  */ 
 
+let resultsBox = document.querySelector('div#result');
+
 const rockBtn = document.querySelector('button#rock');
 rockBtn.addEventListener('click', function() {
     playRound('rock', computerChoice);
+    resultsBox.textContent = roundResult;
 });
 
 const paperBtn = document.querySelector('button#paper');
 paperBtn.addEventListener('click', function() {
     playRound('paper', computerChoice);
+    resultsBox.textContent = roundResult;
 });
 
 const scissorsBtn = document.querySelector('button#scissors');
 scissorsBtn.addEventListener('click', function() {
     playRound('scissors', computerChoice);
+    resultsBox.textContent = roundResult;
 });
 
-const resultsBox = document.querySelector('div#result');
+

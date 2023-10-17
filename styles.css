@@ -2,8 +2,14 @@
     border: 2px solid purple;
     display: flex;
     width: 600px;
-    height: 500px;
+    height: 150px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#result {
+    width: 600px;
+    text-align: center;
 }
