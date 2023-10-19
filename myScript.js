@@ -22,6 +22,11 @@ const loseResult = "You lose!";
 function playRound(playerChoice, computerChoice) {
     computerChoice = getComputerChoice();
 
+    if(playerScore === 5 || computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+    };
+
     let playerLowercase = playerChoice.toLowerCase();
    
     if (playerLowercase === computerChoice) {
@@ -63,8 +68,14 @@ function playRound(playerChoice, computerChoice) {
     playerScoreBox.textContent = `Player Score: ${playerScore}`;
     computerScoreBox.textContent = `Computer Score: ${computerScore}`;
 
+    if(playerScore === 5) {
+        roundResult = 'Congratulations! You won the Round! First to 5!';
+    } else if (computerScore === 5) {
+        roundResult = 'Unfortunate! You lost the Round! Computer Scored 5!';
+    };
+
     return roundResult;
-}
+};
 
 let playerScore = 0;
 let computerScore = 0;
